@@ -1,4 +1,4 @@
-# Environment files — NEVER commit real secrets
+# Environment files - NEVER commit real secrets
 .env
 .env.production
 .env.local
@@ -25,12 +25,3 @@ nginx/certs/
 .vscode/
 .idea/
 *.log
-
-# Alembic
-alembic/versions/__pycache__/docvenv/
-.venv/
-venv/
-__pycache__/
-.pytest_cache/
-*.pyc
-.env

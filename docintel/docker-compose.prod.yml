@@ -1,0 +1,41 @@
+services:
+  postgres:
+    restart: always
+    ports: !reset []
+
+  redis:
+    restart: always
+    ports: !reset []
+
+  qdrant:
+    restart: always
+    ports: !reset []
+
+  api:
+    restart: always
+    env_file: .env.production
+    volumes: !reset []
+    ports: !reset []
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 2
+
+  celery_worker:
+    restart: always
+    env_file: .env.production
+    volumes: !reset []
+
+  flower:
+    restart: always
+    env_file: .env.production
+    ports: !override
+      - "127.0.0.1:5555:5555"
+
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - api

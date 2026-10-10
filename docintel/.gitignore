@@ -1,0 +1,32 @@
+
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# Certificates and keys
+*.pem
+*.key
+nginx/certs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+docvenv/
+*.egg-info/
+
+# Uploads (user data, not code)
+uploads/*
+!uploads/.gitkeep
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+*.log
